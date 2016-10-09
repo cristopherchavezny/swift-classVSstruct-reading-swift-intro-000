@@ -43,10 +43,13 @@ fred.name = "Brick"
 fred.weight = 999.2
 fred.homePlanet = "Mars"
 ```
-
+It won't, homePlanet is a constant and can not be changed after it has been initialized
 ### Question 2
 
 Can you fix the class definition above so that it _does_ work?
+
+Change homePlanet to a variable.
+var homePlanet: String
 
 ### Question 3
 
@@ -74,9 +77,13 @@ bilbo.height = 1.42
 bilbo.homePlanet = "Saturn"
 ```
 
+It will not bilbo is a constant and nothing can be changed.
+
 ### Question 4
 
 Can you change the declaration of `bilbo` so that the above three lines of code _do_ work?
+
+var bilbo = Alien(name: "Bilbo", height: 1.67, homePlanet: "Venus")
 
 ### Question 5
 
@@ -90,6 +97,10 @@ jason.name = "Jason"
 
 What will the value of `edgar.name` be after those three lines of code are run? What will the value of `jason.name` be? Why?
 
+edgar.name will be "Jason"
+jason.name will be "Jason"
+
+
 ### Question 6
 
 Given this bit of code that uses the `Alien` struct:
@@ -101,6 +112,8 @@ charlesFromJupiter.homePlanet = "Jupiter"
 ```
 
 What will the value of `charles.homePlanet` be after the above code run? What about the value of `charlesFromJupiter.homePlanet`? Why?
+charles.homePlanet will be "Pluto"
+charlesFromJupiter.homePlanet will be "Jupiter"
 
 ### Question 7
 
@@ -123,9 +136,20 @@ struct BankAccount {
 
 Does this code work? Why or why not?
 
+It does not, we need to add mutating keyword to both methods because we are changing a property of a struct
+
 ### Question 8
 
 Can you fix the `BankAccount` struct so it _does_ work?
+
+mutating func deposit(_ amount: Double) {
+balance += amount
+}
+
+mutating func withdraw(_ amount: Double) {
+balance -= amount
+}
+
 
 ### Question 9
 
@@ -138,6 +162,11 @@ joeAccount.withdraw(50.0)
 ```
 
 What will the value of `joeAccount.balance` be after the above code runs? What about the value of `joeOtherAccount.balance`? Why?
+
+joeAccount.balance will be "50.00"
+joeOtherAccount.balance will be 100.00
+
+Because structs have value types
 
 ### Question 10
 
@@ -168,5 +197,8 @@ library2.add(track: "Come As You Are")
 ```
 
 After this code runs, what are the contents of `library1.tracks`? What about the contents of `library2.tracks`? Why?
+
+["Michelle", "Voodoo Child", "Come As You Are"]
+classes are referrence types
 
 <a href='https://learn.co/lessons/ClassesVsStructs' data-visibility='hidden'>View this lesson on Learn.co</a>
